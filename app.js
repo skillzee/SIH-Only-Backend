@@ -15,13 +15,16 @@ config({
     path: "Database/config.env"
 })
 
+const corsOptions = {
+    origin: 'https://sih-frontend-bg1yhi9ec-parth-sharmas-projects.vercel.app', // Your frontend URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  };
 
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.static("public"))
-app.use(cors({
-    origin: process.env.FRONTEND_URI // Replace with your frontend domain
-  }));
+app.use(cors(corsOptions))
   
 
 
